@@ -1,0 +1,20 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name:  auth-node-app12
+  labels:
+    app: auth-node-app12
+    app.kubernetes.io/component: backstage
+    backstage.io/kubernetes-id: demo-dev
+    argocd.argoproj.io/instance: auth-node-app12
+    argocd/app-name: auth-node-app12
+    argocd/app-selector: auth-node-app12
+spec:
+  to:
+    kind: Service
+    name:  auth-node-app12
+  port:
+    targetPort: 3000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
